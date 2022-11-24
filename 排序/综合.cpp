@@ -10,19 +10,19 @@ using namespace std;
 
 int a[N] = { 0, 1, 5, 2, 5, 6, 6, 4 }, t[N];
 
-/* ½»»» */
+/* äº¤æ¢ */
 void swap(int *a, int *b);
 
-/* Õ¹Ê¾Êý×é */
+/* å±•ç¤ºæ•°ç»„ */
 void show(int l, int r);
 
-/* ¹é²¢ÅÅÐò */
+/* å½’å¹¶æŽ’åº */
 void merge_sort(int l, int r);
 
-/* ¶ÑÅÅÐò */
+/* å †æŽ’åº */
 void heap_sort(int l, int r);
 
-/* ¿ìËÙÅÅÐò */
+/* å¿«é€ŸæŽ’åº */
 void fast_sort(int l, int r);
 
 int main()
@@ -59,7 +59,7 @@ void heap_sort(int l, int r)
 	run(i, l + 1, r)
 	{
 		int p = i;
-		while (p > l && a[p] > a[p >> 1] && p >> 1 >= l) swap(&a[p], &a[p >> 1]), p >>= 1; // ´ËÐÐ·Ç³£µÄÃî
+		while (p > l && a[p] > a[p >> 1] && p >> 1 >= l) swap(&a[p], &a[p >> 1]), p >>= 1; // æ­¤è¡Œéžå¸¸çš„å¦™
 	}
 	while (r > l)
 	{
