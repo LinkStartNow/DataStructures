@@ -7,9 +7,47 @@ using namespace std;
 
 const int N = 100;
 
+char* path[] = {"e:/1.txt", "e:/2.txt", "e:/3.txt", "e:/4.txt", "e:/5.txt"};
+
 int fi[N], tot;
 
 int clone[N];
+
+/* 各种函数定义区 */
+void init();
+
+void pre();
+
+void show();
+
+void res();
+
+void mao();
+
+void into();
+
+void choose();
+
+void fast();
+
+void read(int k);
+
+int main()
+{
+    while(1)
+    {
+        printf("请输入1到5的数字来选择初始数据组:");
+        int t;
+        cin >> t;
+        read(t);
+        pre();
+        mao();
+        into();
+        choose();
+        fast();
+        res();
+    }
+}
 
 void init()
 {
@@ -93,22 +131,31 @@ void fast() // 调用快速排序
     printf("快速排序比较了%d次, 移动了%d次\n", com, mov);
 }
 
+void pre()
+{
+    run(i, 1, tot) clone[i] = fi[i];
+    printf("原数据为：");
+    show();
+}
+
 void show()
 {
     run(i, 1, tot) cout << clone[i] << ' ';
     cout << endl;
 }
 
-int main()
+void res()
 {
-    FILE* f = fopen("e:/b.txt", "rt");
-    if(f) while(!feof(f)) fscanf(f, "%d", &fi[++ tot]);
-    else cout << "error";
-    tot --;
-//    while(cin >> fi[++ tot]); tot --;
-    mao();
-    into();
-    choose();
-    fast();
+    printf("排序后的数据为：");
     show();
+}
+
+void read(int k)
+{
+    tot = 0;
+    FILE* f = fopen(path[k - 1], "rt");
+    if(f) while(!feof(f)) fscanf(f, "%d", &fi[++ tot]);
+    else {cout << "error"; return;}
+    puts("数据读入成功!");
+    tot --;
 }
