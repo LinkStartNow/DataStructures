@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct fuck
+{
+    int x,y;
+    string s;
+    bool operator<(const fuck & that) const
+    {
+        if(s == that.s)
+        {
+            if(x == that.x)
+                return y < that.y;
+            return x < that.x;
+        }
+        return s < that.s;
+    }
+};
+int main()
+{
+    fuck a[2];
+    a[0].s = "c";
+    a[1].s = "b";
+    sort(a,a+2);
+    cout << a[0].s;
+}

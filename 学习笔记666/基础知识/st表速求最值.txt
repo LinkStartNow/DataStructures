@@ -1,0 +1,56 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N = 1e5 + 5;
+int a[N],n;
+int sum[N];
+int f[N][30];
+void pre(int x)
+{
+    for(int i = 1;i <= n;i ++) f[i][0] = sum[i];
+    for(int j = 1;j <= x;j ++)
+        for(int i = 1;i <= n - (1 << j) + 1;i ++)
+            f[i][j] = max(f[i][j - 1],f[i + (1 << (j - 1))][j - 1]);
+}
+int getm(int l,int r)
+{
+    int ans;
+    int t = log(r - l + 1) / log(2);
+    ans = max(f[l][t],f[r + 1 - (1 << t)][t]);
+    return ans;
+}
+int main()
+{
+    int t,i,m,tt,ma;
+    int l,r,k;
+    int x;
+    cin >> t;
+    while(t --)
+    {
+        scanf("%d",&n);
+        sum[0] = 0;
+        for(int i = 1; i <= n; i ++)
+        {
+            scanf("%d",&a[i]);
+            sum[i] = sum[i - 1] + a[i];
+        }
+        tt = log(n) / log(2);
+        pre(tt);
+        scanf("%d",&m);
+        while(m --)
+        {
+            scanf("%d%d%d",&l,&r,&k);
+            if(k <= 0)
+                printf("Yes\n");
+            else
+            {
+                k += sum[l - 1];
+                ma = getm(l,r);
+                if(ma >= k)
+                    printf("Yes\n");
+                else
+                    printf("No\n");
+            }
+        }
+    }
+    return 0;
+}

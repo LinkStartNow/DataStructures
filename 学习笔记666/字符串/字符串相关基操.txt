@@ -1,0 +1,13 @@
+substr对象都是string
+string t, s;
+s = t.substr(a, b);
+s最终为从t[a]开始长度为b的字符串，ab都不填则为完全复制，b不填则从t[a]到t结尾,同时还可以进行加法拼接，因为t.substr也是string。
+
+
+
+strcpy的对象全为字符数组
+char s[666], t[666];
+strcpy(s + x,  t + y);
+将t[y]开始的t字符串赋值到s[x]开始的位置
+strncpy(s + x, t + y, n)
+其余与上述相同，n为复制总长度。
